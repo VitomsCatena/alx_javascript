@@ -1,3 +1,5 @@
+#!/usr/bin/node
+
 function executeXTimes(x, theFunction) {
   if (x <= 0) {
     return; // No need to execute the function if x is less than or equal to 0
