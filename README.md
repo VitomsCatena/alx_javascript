@@ -32,3 +32,5 @@ At the end of this project, am  expected to be able to explain to anyone, withou
 -How to import a file
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+[![codecov](https://codecov.io/gh/username/repo-name/branch/master/graph/badge.svg)](https://codecov.io/gh/vitomscatena/alx_javascript)
+
