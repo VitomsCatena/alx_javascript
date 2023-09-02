@@ -1,7 +1,9 @@
 # alx_javascript
 
 My first ALX Javascript project
+
 # javascript-warm_up
+
 ##Alx JS project
 
 This is my first JS task as an ALX students below are the guidelines and objectives for this projects:
