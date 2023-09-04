@@ -1,10 +1,6 @@
 #!/usr/bin/node
-
 //initial value for myVar
-var myVar = 0;
-
-// Modified value of myVar to 333
+let myVar = 0;
 myVar = 333;
-//logged  updated value to the console
-
-console.log("myVar is now:", myVar);
+//logged  updated value to the 
+console.log("myVar");
