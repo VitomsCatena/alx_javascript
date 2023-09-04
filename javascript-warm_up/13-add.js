@@ -8,8 +8,3 @@ console.log(add(3, 5));
 //     return num1+num2
 // }
 // console.log(add(7,9));
-//function
-function add(a, b) {
-  return a + b;
-};
-module.exports = { add };
