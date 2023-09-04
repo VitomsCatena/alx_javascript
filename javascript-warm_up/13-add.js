@@ -4,6 +4,5 @@ console.log(add(3, 5));
 //function
 function add(a, b) {
   return a + b;
-}
-
+};
 module.exports = { add };
