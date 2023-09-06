@@ -29,6 +29,6 @@ if (require.main === module) {
   console.log(r3.width);
   console.log(r3.height);
 
-  const r4 = new Rectangle(0, 5);
+  const r4 = new Rectangle(2, 0);
   console.log(r4);
 }
