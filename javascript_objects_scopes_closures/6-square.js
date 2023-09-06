@@ -3,7 +3,7 @@ const Rectangle = require('./5-square.js');
 
 class Square extends Rectangle {
   constructor(size) {
-    // Call the constructor of the parent class (Rectangle) using super()
+    //constructor of the parent class (Rectangle) using super()
     super(size, size);
   }
 
@@ -21,4 +21,3 @@ class Square extends Rectangle {
 }
 
 module.exports = Square;
-
