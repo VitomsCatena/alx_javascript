@@ -1,7 +1,9 @@
 #!/usr/bin/node
+const Rectangle = require('./4-rectangle');
+
 class Square extends Rectangle {
   constructor(size) {
-    //constructor of the parent class (Rectangle) using super()
+    // Call the constructor of the parent class (Rectangle) using super()
     super(size, size);
   }
 
@@ -20,14 +22,3 @@ class Square extends Rectangle {
 
 module.exports = Square;
 
-//code example:
-
-if (require.main === module) {
-  const square1 = new Square(4);
-  console.log('Square 1:');
-  square1.charPrint();
-
-  const square2 = new Square(3);
-  console.log('Square 2:');
-  square2.charPrint('A');
-}
