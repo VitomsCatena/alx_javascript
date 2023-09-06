@@ -13,7 +13,6 @@ class Rectangle {
 
 module.exports = Rectangle;
 
-// Example usage:
 if (require.main === module) {
   const r1 = new Rectangle(2, 3);
   console.log(r1);
