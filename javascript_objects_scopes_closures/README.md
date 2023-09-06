@@ -1,4 +1,5 @@
 #Learning Objectives
+
 **At the end of this project, you are expected to be able to explain to anyone, without the help of Google:**
 
 ###General
@@ -7,9 +8,9 @@
 3.What this means
 4.What undefined means
 5.Why the variable type and scope is important
-What is a closure
-What is a prototype
-How to inherit an object from another
+6What is a closure
+7What is a prototype
+8How to inherit an object from another
 Requirements
 General
 Recommended editors: Visual studio code
