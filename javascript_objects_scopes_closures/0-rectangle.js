@@ -2,7 +2,7 @@
 
 class Rectangle {
   constructor() {
-    // Constructor code can be added here the time need will a rise needed.
+    // Constructor code can be added here the time need will a rise needed.For now Aluta continua as i stay delulu cause its the solulu
   }
 }
 
