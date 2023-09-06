@@ -6,19 +6,11 @@ class Rectangle {
     this.height = height;
   }
 }
-
 class Square extends Rectangle {
   constructor(size) {
-    //constructor of the parent class (Rectangle) using super()
-    super(size, size);
+    super(size, size); // Call the Rectangle constructor with the same size for width and height
   }
 }
 
 module.exports = Square;
 
-// Example usage:
-if (require.main === module) {
-  const square = new Square(4);
-  console.log(`Square Width: ${square.width}`);
-  console.log(`Square Height: ${square.height}`);
-}
