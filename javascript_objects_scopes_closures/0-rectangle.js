@@ -1,19 +1,9 @@
 #!/usr/bin/node
 
 class Rectangle {
-  constructor(width, height, color) {
-    this.width = width;
-    this.height = height;
-    this.color = color;
-  }
-
-  calcArea() {
-    return this.width * this.height;
-  }
-
-  calcPerimeter() {
-    return 2 * (this.width + this.height);
+  constructor() {
+    // Constructor code can be added here the time need will a rise needed.
   }
 }
-const r1 = new Rectangle();
-console.log(r1);
+
+module.exports = Rectangle; //To export the class if i want to use it in other modules i will use this
