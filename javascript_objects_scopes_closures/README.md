@@ -1,12 +1,12 @@
-Learning Objectives
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
+#Learning Objectives
+**At the end of this project, you are expected to be able to explain to anyone, without the help of Google:**
 
-General
-Why JavaScript programming is amazing
-How to create an object in JavaScript
-What this means
-What undefined means
-Why the variable type and scope is important
+###General
+1.Why JavaScript programming is amazing
+2.How to create an object in JavaScript
+3.What this means
+4.What undefined means
+5.Why the variable type and scope is important
 What is a closure
 What is a prototype
 How to inherit an object from another
