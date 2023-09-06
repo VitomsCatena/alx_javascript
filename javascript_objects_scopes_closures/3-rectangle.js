@@ -20,7 +20,8 @@ class Rectangle {
 
 module.exports = Rectangle;
 
-// Example usage:
+//alx code:
+
 if (require.main === module) {
   const r1 = new Rectangle(5, 3);
   r1.print();
