@@ -8,9 +8,9 @@ My first ALX Javascript project.
 
 This is my first JS task as an ALX students below are the guidelines and objectives for this projects:
 
-##Learning Objectives
+##Learning Objectives;
 
-At the end of this project, am  expected to be able to explain to anyone, without the help of Google:
+~At the end of this project, am  expected to be able to explain to anyone, without the help of Google:~
 
 ###General:
 
