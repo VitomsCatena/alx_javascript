@@ -23,4 +23,5 @@ request.get(url, (error, response, body) => {
     console.error("Unable to retrieve the status code.");
     process.exit(1);
   }
+  
 });
