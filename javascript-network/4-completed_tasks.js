@@ -2,7 +2,8 @@
 
 const request = require('request');
 
-// Define the API routes
+// API routes
+
 const routes = [
   'http://localhost:5050/route_0',
   'http://localhost:5050/route_1',
@@ -12,6 +13,7 @@ const routes = [
 ];
 
 // Function to fetch data from a route and count users with completed tasks
+
 function countUsersWithCompletedTasks(route) {
   request(route, (error, response, body) => {
     if (error) {
@@ -27,10 +29,12 @@ function countUsersWithCompletedTasks(route) {
     try {
       const data = JSON.parse(body);
 
-      // Initialize the count of users with completed tasks to 0
+      // Initializing the count of users with completed tasks to 0
+      
       let count = 0;
 
-      // Iterate through the data and count users with completed tasks
+      // Iterating through the data and count users with completed tasks
+      
       data.forEach((item) => {
         if (item.completed) {
           count++;
@@ -44,7 +48,9 @@ function countUsersWithCompletedTasks(route) {
   });
 }
 
-// Loop through the routes and count users with completed tasks for each route
+// Looping through the routes and counting users with completed tasks for each route
+
+
 routes.forEach((route) => {
   countUsersWithCompletedTasks(route);
 });
