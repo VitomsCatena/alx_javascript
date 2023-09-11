@@ -1,6 +1,7 @@
 const request = require('request');
 
-// Function to retrieve the title of a Star Wars movie by movie ID
+//  retrieving title of a Star Wars movie by movie ID
+
 function getMovieTitle(movieID) {
   const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieID}`;
 
@@ -15,7 +16,8 @@ function getMovieTitle(movieID) {
   });
 }
 
-// Check if a movie ID is provided as a command line argument
+// Check ifmovie ID is provided as a command line argument
+
 const args = process.argv.slice(2);
 
 if (args.length !== 1) {
