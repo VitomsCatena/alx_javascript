@@ -2,40 +2,49 @@
 
 const request = require('request');
 
-// Define the API URL
-const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
+// Define the API routes
+const routes = [
+  'http://localhost:5050/route_0',
+  'http://localhost:5050/route_1',
+  'http://localhost:5050/route_2',
+  'http://localhost:5050/route_3',
+  'http://localhost:5050/route_4',
+];
 
-// Perform the HTTP request to fetch the task data
-request(apiUrl, (error, response, body) => {
-  if (error) {
-    console.error('Error fetching task data:', error);
-    process.exit(1);
-  }
+// Function to fetch data from a route and count users with completed tasks
+function countUsersWithCompletedTasks(route) {
+  request(route, (error, response, body) => {
+    if (error) {
+      console.error(`Error fetching data from ${route}:`, error);
+      return;
+    }
 
-  if (response.statusCode !== 200) {
-    console.error('Failed to fetch task data. Status code:', response.statusCode);
-    process.exit(1);
-  }
+    if (response.statusCode !== 200) {
+      console.error(`Failed to fetch data from ${route}. Status code:`, response.statusCode);
+      return;
+    }
 
-  try {
-    const tasks = JSON.parse(body);
+    try {
+      const data = JSON.parse(body);
 
-    // Create a Set to store unique user IDs with completed tasks
-    const usersWithCompletedTasks = new Set();
+      // Initialize the count of users with completed tasks to 0
+      let count = 0;
 
-    // Iterate through the tasks and add user IDs with completed tasks to the Set
-    tasks.forEach((task) => {
-      if (task.completed) {
-        usersWithCompletedTasks.add(task.userId);
-      }
-    });
+      // Iterate through the data and count users with completed tasks
+      data.forEach((item) => {
+        if (item.completed) {
+          count++;
+        }
+      });
 
-    // Calculate the number of users with completed tasks
-    const numberOfUsersWithCompletedTasks = usersWithCompletedTasks.size;
+      console.log(`Correct output - ${count} users - ${route}`);
+    } catch (parseError) {
+      console.error(`Error parsing data from ${route}:`, parseError);
+    }
+  });
+}
 
-    console.log(`Number of users with completed tasks: ${numberOfUsersWithCompletedTasks}`);
-  } catch (parseError) {
-    console.error('Error parsing task data:', parseError);
-    process.exit(1);
-  }
+// Loop through the routes and count users with completed tasks for each route
+routes.forEach((route) => {
+  countUsersWithCompletedTasks(route);
 });
