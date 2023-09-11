@@ -2,7 +2,7 @@
 
 const request = require('request');
 
-// API URL
+// Define the API URL
 const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
 
 // Perform the HTTP request to fetch the task data
@@ -20,24 +20,20 @@ request(apiUrl, (error, response, body) => {
   try {
     const tasks = JSON.parse(body);
 
-    // Create a dictionary to store the number of completed tasks for each user
-    const completedTasksByUser = {};
+    // Create a Set to store unique user IDs with completed tasks
+    const usersWithCompletedTasks = new Set();
 
-    // Iterate through the tasks and count completed tasks by user
+    // Iterate through the tasks and add user IDs with completed tasks to the Set
     tasks.forEach((task) => {
       if (task.completed) {
-        if (!completedTasksByUser[task.userId]) {
-          completedTasksByUser[task.userId] = 1;
-        } else {
-          completedTasksByUser[task.userId]++;
-        }
+        usersWithCompletedTasks.add(task.userId);
       }
     });
 
-    // Print the number of completed tasks for each user
-    for (const userId in completedTasksByUser) {
-      console.log(`User ${userId} completed ${completedTasksByUser[userId]} tasks.`);
-    }
+    // Calculate the number of users with completed tasks
+    const numberOfUsersWithCompletedTasks = usersWithCompletedTasks.size;
+
+    console.log(`Number of users with completed tasks: ${numberOfUsersWithCompletedTasks}`);
   } catch (parseError) {
     console.error('Error parsing task data:', parseError);
     process.exit(1);
