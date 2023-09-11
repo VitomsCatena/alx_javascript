@@ -6,6 +6,7 @@ const { promisify } = require('util');
 const writeFileAsync = promisify(fs.writeFile);
 
 // Check if both URL and file path are provided as arguments
+
 if (process.argv.length !== 4) {
   console.error('Usage: node fetchAndStore.js <URL> <file-path>');
   process.exit(1);
@@ -14,7 +15,8 @@ if (process.argv.length !== 4) {
 const url = process.argv[2];
 const filePath = process.argv[3];
 
-// Perform the HTTP request to fetch the webpage contents
+//HTTP request to fetch the webpage contents
+
 request(url, (error, response, body) => {
   if (error) {
     console.error('Error fetching the webpage:', error);
@@ -27,6 +29,7 @@ request(url, (error, response, body) => {
   }
 
   // Write the fetched content to the specified file
+  
   writeFileAsync(filePath, body, 'utf-8')
     .then(() => {
       console.log(`Successfully fetched and saved contents to ${filePath}`);
