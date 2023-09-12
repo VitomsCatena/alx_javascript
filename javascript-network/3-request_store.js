@@ -1,41 +1,32 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
 const request = require('request');
-const { promisify } = require('util');
-const writeFileAsync = promisify(fs.writeFile);
-
-// Check if both URL and file path are provided as arguments
-
-if (process.argv.length !== 4) {
-  console.error('Usage: node fetchAndStore.js <URL> <file-path>');
-  process.exit(1);
-}
+const fs = require('fs');
 
 const url = process.argv[2];
 const filePath = process.argv[3];
 
-//HTTP request to fetch the webpage contents
+if (!url || !filePath) {
+  console.error('Please provide both a URL and a file path as arguments.');
+  process.exit(1);
+}
 
 request(url, (error, response, body) => {
   if (error) {
-    console.error('Error fetching the webpage:', error);
+    console.error('Error:', error);
     process.exit(1);
   }
 
   if (response.statusCode !== 200) {
-    console.error('Failed to fetch webpage. Status code:', response.statusCode);
+    console.error('Request failed with status code:', response.statusCode);
     process.exit(1);
   }
 
-  // Write the fetched content to the specified file
-  
-  writeFileAsync(filePath, body, 'utf-8')
-    .then(() => {
-      console.log(`Successfully fetched and saved contents to ${filePath}`);
-    })
-    .catch((writeError) => {
+  fs.writeFile(filePath, body, 'utf-8', (writeError) => {
+    if (writeError) {
       console.error('Error writing to file:', writeError);
       process.exit(1);
-    });
+    }
+    console.log(`Webpage content saved to ${filePath}`);
+  });
 });
