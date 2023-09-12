@@ -2,55 +2,44 @@
 
 const request = require('request');
 
-// API routes
+const apiUrl = process.argv[2];
 
-const routes = [
-  'http://localhost:5050/route_0',
-  'http://localhost:5050/route_1',
-  'http://localhost:5050/route_2',
-  'http://localhost:5050/route_3',
-  'http://localhost:5050/route_4',
-];
-
-// Function to fetch data from a route and count users with completed tasks
-
-function countUsersWithCompletedTasks(route) {
-  request(route, (error, response, body) => {
-    if (error) {
-      console.error(`Error fetching data from ${route}:`, error);
-      return;
-    }
-
-    if (response.statusCode !== 200) {
-      console.error(`Failed to fetch data from ${route}. Status code:`, response.statusCode);
-      return;
-    }
-
-    try {
-      const data = JSON.parse(body);
-
-      // Initializing the count of users with completed tasks to 0
-      
-      let count = 0;
-
-      // Iterating through the data and count users with completed tasks
-      
-      data.forEach((item) => {
-        if (item.completed) {
-          count++;
-        }
-      });
-
-      console.log(`Correct output - ${count} users - ${route}`);
-    } catch (parseError) {
-      console.error(`Error parsing data from ${route}:`, parseError);
-    }
-  });
+if (!apiUrl) {
+  console.error('Please provide the API URL as an argument.');
+  process.exit(1);
 }
 
-// Looping through the routes and counting users with completed tasks for each route
+const completedTasksByUser = {};
 
+request(apiUrl, (error, response, body) => {
+  if (error) {
+    console.error('Error:', error);
+    process.exit(1);
+  }
 
-routes.forEach((route) => {
-  countUsersWithCompletedTasks(route);
+  if (response.statusCode !== 200) {
+    console.error('Request failed with status code:', response.statusCode);
+    process.exit(1);
+  }
+
+  try {
+    const todos = JSON.parse(body);
+
+    for (const todo of todos) {
+      if (todo.completed) {
+        if (completedTasksByUser[todo.userId]) {
+          completedTasksByUser[todo.userId]++;
+        } else {
+          completedTasksByUser[todo.userId] = 1;
+        }
+      }
+    }
+
+    console.log(completedTasksByUser);
+  } catch (parseError) {
+    console.error('Error parsing JSON:', parseError);
+    process.exit(1);
+  }
 });
+
+    
