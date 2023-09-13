@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 function welcome(firstName, lastName) {
   var fullName = firstName + ' ' + lastName;
