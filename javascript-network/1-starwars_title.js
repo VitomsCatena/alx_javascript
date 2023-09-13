@@ -1,33 +1,32 @@
 const request = require('request');
 
-//  retrieving title of a Star Wars movie by movie ID
-
-function getMovieTitle(movieID) {
-  const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieID}`;
-
-  request(apiUrl, (error, response, body) => {
-    if (!error && response.statusCode === 200) {
-      const movieData = JSON.parse(body);
-      const movieTitle = movieData.title;
-      console.log(`Title of Episode ${movieID}: ${movieTitle}`);
-    } else {
-      console.error(`Error: Unable to fetch movie data for Episode ${movieID}`);
-    }
-  });
+// Check if the user provided an episode number as an argument
+if (process.argv.length < 3) {
+  console.error('Usage: node starwars_title.js <episode_number>');
+  process.exit(1);
 }
 
-// Check ifmovie ID is provided as a command line argument
+// Get the episode number from the command line argument
+const episodeNumber = parseInt(process.argv[2]);
 
-const args = process.argv.slice(2);
+// Create the URL for the Star Wars API endpoint
+const apiUrl = `https://swapi-api.alx-tools.com/api/films/${episodeNumber}`;
 
-if (args.length !== 1) {
-  console.error('Usage: node starwars_movie.js <movieID>');
-} else {
-  const movieID = parseInt(args[0]);
-
-  if (!isNaN(movieID)) {
-    getMovieTitle(movieID);
+// Make an HTTP GET request to the API
+request(apiUrl, (error, response, body) => {
+  if (error) {
+    console.error('Error:', error);
+  } else if (response.statusCode !== 200) {
+    console.error('HTTP Status Code:', response.statusCode);
   } else {
-    console.error('Error: Please provide a valid movie ID as an integer.');
+    try {
+      // Parse the JSON response
+      const movieData = JSON.parse(body);
+
+      // Extract and print the movie title
+      console.log(movieData.title);
+    } catch (parseError) {
+      console.error('Error parsing JSON response:', parseError);
+    }
   }
-}
+});
