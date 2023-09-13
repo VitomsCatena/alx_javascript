@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const request = require('request');
 
 // Check if the user provided an episode number as an argument
