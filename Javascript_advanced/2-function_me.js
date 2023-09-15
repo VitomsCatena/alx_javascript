@@ -1,10 +1,14 @@
-#!/usr/bin/env node
-function welcomeMessage(fullName) {
-  return function () {
-    alert('Welcome ' + fullName);
-  };
-}
+#!/usr/bin/node 
 
-var guillaume = welcomeMessage('Guillaume');
-var alex = welcomeMessage('Alex');
-var fred = welcomeMessage('Fred');
+function welcomeMessage (fullName) {
+    
+    function alert_ () {
+        return alert('Welcome ' + fullName);
+    }
+
+    return alert_
+};
+
+const guillaume = welcomeMessage('Guillaume');
+const alex = welcomeMessage('Alex');
+const fred = welcomeMessage('Fred');
