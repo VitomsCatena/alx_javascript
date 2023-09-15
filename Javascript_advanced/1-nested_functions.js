@@ -2,15 +2,15 @@
 
 /*Closure Scope Chain*/
 
-var globalVariable = 'Welcome';
+const globalVariable = 'Welcome';
 
 function outer() {
   alert(globalVariable);
-  var course = 'Holberton';
+  const course = 'Holberton';
 
   function inner() {
     alert(globalVariable + ' ' + course);
-    var exclamation = '!';
+   const exclamation = '!';
     
     function inception() {
       alert(globalVariable + ' ' + course + exclamation);
