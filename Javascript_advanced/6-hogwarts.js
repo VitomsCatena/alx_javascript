@@ -1,4 +1,5 @@
-#!/usr/bin/env node
+#!/usr/bin/node
+
 const studentHogwarts = () => {
   let privateScore = 0;
   let name = null;
