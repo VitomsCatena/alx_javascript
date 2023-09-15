@@ -1,4 +1,6 @@
-#!/usr/bin/env node
+#!/usr/bin/node 
+
+/*Closure Scope Chain*/
 
 var globalVariable = 'Welcome';
 
