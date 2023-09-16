@@ -1,1 +1,67 @@
 !/usr/bin/node
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="author" content="Victor Omondi Onyango">
+    <title>Cookies Example</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <label for="firstname">First Name:</label>
+    <input type="text" id="firstname"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email"><br><br>
+
+    <button onclick="setCookies()">Log me in</button>
+    <button onclick="showCookies()">Show the cookies</button>
+
+    <script>
+        function setCookies() {
+            const firstnameInput = document.getElementById("firstname");
+            const emailInput = document.getElementById("email");
+
+            // Get the values from the input fields
+            const firstnameValue = firstnameInput.value;
+            const emailValue = emailInput.value;
+
+            // Set cookies with the values
+            document.cookie = `firstname=${firstnameValue}`;
+            document.cookie = `email=${emailValue}`;
+
+            // Clear input fields
+            firstnameInput.value = "";
+            emailInput.value = "";
+        }
+
+        function showCookies() {
+            // Get the cookies and split them into an array
+            const cookies = document.cookie.split(';');
+
+            // Create a paragraph element
+            const paragraph = document.createElement('p');
+
+            // Create a string to store the cookie information
+            let cookieInfo = "Cookies: ";
+
+            // Loop through the cookies and add them to the string
+            cookies.forEach(cookie => {
+                const [name, value] = cookie.trim().split('=');
+                cookieInfo += `${name}=${value}, `;
+            });
+
+            // Remove the trailing comma and space
+            cookieInfo = cookieInfo.slice(0, -2);
+
+            // Set the paragraph's innerHTML with the cookie information
+            paragraph.innerHTML = cookieInfo;
+
+            // Append the paragraph to the bottom of the page
+            document.body.appendChild(paragraph);
+        }
+    </script>
+</body>
+</html>
