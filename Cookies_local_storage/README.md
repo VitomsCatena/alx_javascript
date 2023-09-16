@@ -27,4 +27,4 @@
 
 -src/index.js should stay empty - all your Javascript must be in your HTML, inside <script> tag.
 
-    I am   Vitoms Catena [Whatsapp] (https://wa.me/+245799802335)
+    I am   Vitoms Catena [Whatsapp](https://wa.me/254799802335)
