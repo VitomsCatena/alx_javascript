@@ -1,1 +1,69 @@
 !/usr/bin/node
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies Example</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <label for="firstname">First Name:</label>
+    <input type="text" id="firstname"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email"><br><br>
+
+    <button onclick="setCookies()">Log me in</button>
+    <button onclick="showCookies()">Show the cookies</button>
+
+    <script>
+        function setCookies() {
+            const firstnameInput = document.getElementById("firstname");
+            const emailInput = document.getElementById("email");
+
+            // Get the values from the input fields
+            const firstnameValue = firstnameInput.value;
+            const emailValue = emailInput.value;
+
+            // Create a Date object for 10 days from now
+            const expiresDate = new Date();
+            expiresDate.setDate(expiresDate.getDate() + 10);
+
+            // Set cookies with the values and an expiration date of 10 days
+            document.cookie = `firstname=${firstnameValue}; expires=${expiresDate.toUTCString()}`;
+            document.cookie = `email=${emailValue}; expires=${expiresDate.toUTCString()}`;
+
+            // Clear input fields
+            firstnameInput.value = "";
+            emailInput.value = "";
+        }
+
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.trim().split('=');
+                if (cookieName === name) {
+                    return cookieValue;
+                }
+            }
+            return "";
+        }
+
+        function showCookies() {
+            // Get the email and firstname cookies using the getCookie function
+            const emailCookie = getCookie("email");
+            const firstnameCookie = getCookie("firstname");
+
+            // Create a paragraph element
+            const paragraph = document.createElement('p');
+
+            // Set the paragraph's innerHTML with the cookie information
+            paragraph.innerHTML = `Email: ${emailCookie} - Firstname: ${firstnameCookie}`;
+
+            // Append the paragraph to the bottom of the page
+            document.body.appendChild(paragraph);
+        }
+    </script>
+</body>
+</html>
