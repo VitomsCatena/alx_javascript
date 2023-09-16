@@ -5,9 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta name="author" content="Victor Omondi Onyango">
+    <meta name="author" content="Victor Omondi Onyango">
     <title>Cookies task project</title>
 </head>
+    <!--body section-->
+    
 <body>
     <h1>Login Form</h1>
     <label for="firstname">First Name:</label>
@@ -24,15 +26,18 @@
             const firstnameInput = document.getElementById("firstname");
             const emailInput = document.getElementById("email");
 
-            // Get the values from the input fields
+            // Getting the values from the input fields
+            
             const firstnameValue = firstnameInput.value;
             const emailValue = emailInput.value;
 
-            // Set cookies with the values
+            // Setting cookies with the values
+            
             document.cookie = `firstname=${firstnameValue}`;
             document.cookie = `email=${emailValue}`;
 
             // Clear input fields
+            
             firstnameInput.value = "";
             emailInput.value = "";
         }
