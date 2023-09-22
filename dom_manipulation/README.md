@@ -1,11 +1,12 @@
-JS HTML DOM manipulation
-General Objectives
+# JS HTML DOM manipulation.
+
+## General Objectives.
 Understand the Document Object Model (DOM)
 Access and Manipulate Elements with JavaScript
 How to use CSS selectors and traverse the DOM tree
 How to work with event listeners/handlers
 Brief Introduction
-What is the Document Object Model (DOM)?
+### What is the Document Object Model (DOM)?
 The Document Object Model, often referred to as the DOM, is a crucial concept in web development.
 It forms the bridge between web pages and the JavaScript language, enabling you to interact with and manipulate the content and structure of a webpage in real-time.
 Understanding the DOM is like gaining the keys to the inner workings of a website.
