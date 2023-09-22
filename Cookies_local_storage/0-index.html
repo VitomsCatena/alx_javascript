@@ -1,77 +1,36 @@
 !/usr/bin/node
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Victor Omondi Onyango">
-    <title>Cookies task project</title>
-</head>
-    <!--body section-->
-    
-<body>
-    <h1>Login Form</h1>
-    <label for="firstname">First Name:</label>
-    <input type="text" id="firstname"><br><br>
-
-    <label for="email">Email:</label>
-    <input type="text" id="email"><br><br>
-
-    <button onclick="setCookies()">Log me in</button>
-    <button onclick="showCookies()">Show the cookies</button>
-
+<html>
+  <head>
+    <title>Create basic cookie</title>
     <script>
-        function setCookies() {
-            const firstnameInput = document.getElementById("firstname");
-            const emailInput = document.getElementById("email");
+      function setCookies() {
+        let firstname = document.getElementById('firstname').value;
+        let email = document.getElementById('email').value;
+        document.cookie = `firstname=${firstname}`;
+        document.cookie = `email=${email}`;
+      }
 
-            // Getting the values from the input fields
-            
-            const firstnameValue = firstnameInput.value;
-            const emailValue = emailInput.value;
-
-            // Setting cookies with the values
-            
-            document.cookie = `firstname=${firstnameValue}`;
-            document.cookie = `email=${emailValue}`;
-
-            // Clear input fields
-            
-            firstnameInput.value = "";
-            emailInput.value = "";
+      function showCookies() {
+        let cookies = document.cookie.split('; ');
+        let p = document.createElement('p');
+        p.innerHTML = 'Cookies: ';
+        for (let i = 0; i < cookies.length; i++) {
+          let cookie = cookies[i];
+          if (cookie.startsWith('firstname=') || cookie.startsWith('email=')) {
+            p.innerHTML += cookie.split('=')[1] + ', ';
+          }
         }
-
-        function showCookies() {
-            
-            // Get the cookies and split them into an array
-            const cookies = document.cookie.split(';');
-
-            // Create a paragraph element
-            
-            const paragraph = document.createElement('p');
-
-            // Create a string to store the cookie information
-            let cookieInfo = "Cookies: ";
-
-            // Loop through the cookies and add them to the string
-            cookies.forEach(cookie => {
-                const [name, value] = cookie.trim().split('=');
-                cookieInfo += `${name}=${value}, `;
-            });
-
-            // Remove the trailing comma and space
-            cookieInfo = cookieInfo.slice(0, -2);
-
-            // Set the paragraph's innerHTML with the cookie information
-            paragraph.innerHTML = cookieInfo;
-
-            // Append the paragraph to the bottom of the page
-            document.body.appendChild(paragraph);
-        }
+        p.innerHTML = p.innerHTML.slice(0, -2);
+        document.body.appendChild(p);
+      }
     </script>
-    
-</body>
-    
-    <h6>Copyright @<a href="https://wa.me/+254799802335">Vitomscatena</a></h6>
+  </head>
+  <body>
+    <input type="text" id="firstname" placeholder="First Name" /><br /><br />
+    <input type="text" id="email" placeholder="Email" /><br /><br />
+    <button onclick="setCookies()">Log me in</button><br /><br />
+    <button onclick="showCookies()">Show the cookies</button>
+  </body>
 </html>
