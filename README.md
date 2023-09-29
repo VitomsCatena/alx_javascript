@@ -1,6 +1,6 @@
 # alx_javascript.
 
---My first ALX Javascript project.
+--My first ALX Javascript project.--
 
 # javascript-warm_up.
 
